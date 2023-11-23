@@ -6,4 +6,5 @@
       <BlogApp><BlogApp>  
     <Appwrite>
   </NextJs>
+      Hello World
 </code>
