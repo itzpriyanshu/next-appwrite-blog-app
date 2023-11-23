@@ -1,9 +1,10 @@
-"use client";
+"use client"
 
+import React, { useState, useEffect } from 'react';
+import { Client, Databases } from 'appwrite';
 import Navbar from "./components/navbar";
 import BlogPost from "./components/BlogPosts";
-import { useState, useEffect } from "react";
-import { Client, Databases, ID } from "appwrite";
+import LoadingScreen from "./loading/loading";
 
 const client = new Client();
 
@@ -13,6 +14,7 @@ client
 
 export default function Home() {
   const [blogpost, setblogpost] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     document.title = 'Blog - Hunting Coder';
@@ -26,13 +28,20 @@ export default function Home() {
     promise.then(
       function (response) {
         console.log(response);
-        setblogpost(response.documents)
+        setblogpost(response.documents);
+        setLoading(false);
       },
       function (error) {
         console.log(error);
+        setLoading(false);
       }
     );
   }, []);
+
+  if (loading) {
+    return <LoadingScreen />;
+  }
+
   return (
     <>
       <Navbar />
