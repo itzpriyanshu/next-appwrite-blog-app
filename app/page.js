@@ -1,10 +1,9 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-import { Client, Databases } from 'appwrite';
-import Navbar from "./components/navbar";
 import BlogPost from "./components/BlogPosts";
 import LoadingScreen from "./loading/loading";
+import { Client, Databases } from 'appwrite';
 
 const client = new Client();
 
@@ -13,6 +12,7 @@ client
   .setProject("655c47e550a446714751");
 
 export default function Home() {
+  console.log(process.env.NEXT_PUBLIC_A)
   const [blogpost, setblogpost] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -21,8 +21,8 @@ export default function Home() {
     const databases = new Databases(client);
 
     let promise = databases.listDocuments(
-      "655c4cd2f0ea82d8894f",
-      "655c4ce2a294f804f81f"
+      process.env.NEXT_PUBLIC_A,
+      process.env.NEXT_PUBLIC_B
     );
 
     promise.then(
@@ -44,8 +44,7 @@ export default function Home() {
 
   return (
     <>
-      <Navbar />
-      <div className="container mx-auto my-8">
+      <div className="container p-4 mx-auto my-8">
         <h1 className="text-4xl font-bold mb-8">Latest Blog Posts</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogpost.map((post) => (

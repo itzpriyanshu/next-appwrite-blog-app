@@ -1,10 +1,8 @@
 import React from 'react'
-import Navbar from '@/app/components/navbar';
 
 const about = () => {
   return (
     <>
-    <Navbar/>
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded shadow-md w-2/3">
         <h2 className="text-2xl font-semibold mb-6">About Hunting Coder</h2>

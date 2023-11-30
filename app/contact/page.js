@@ -1,10 +1,8 @@
 import React from 'react'
-import Navbar from '@/app/components/navbar';
 
 const contact = () => {
   return (
     <>
-    <Navbar/>
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-2xl w-96">
         <h2 className="text-2xl font-semibold mb-6">Contact Us</h2>

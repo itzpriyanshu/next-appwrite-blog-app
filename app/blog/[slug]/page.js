@@ -3,7 +3,6 @@
 import React from "react";
 import { Client, Databases, ID, Query } from "appwrite";
 import { useState, useEffect } from "react";
-import Navbar from "@/app/components/navbar";
 
 const client = new Client();
 
@@ -12,6 +11,7 @@ client
   .setProject("655c47e550a446714751");
 
 const BlogPost = ({ params }) => {
+  
   const [blogPost, setblogPost] = useState();
   const { slug } = params;
 
@@ -20,8 +20,8 @@ const BlogPost = ({ params }) => {
     const databases = new Databases(client);
 
     let promise = databases.listDocuments(
-      "655c4cd2f0ea82d8894f",
-      "655c4ce2a294f804f81f",
+      process.env.NEXT_PUBLIC_A,
+      process.env.NEXT_PUBLIC_B
 
       [Query.equal("slug", slug)]
     );
@@ -47,8 +47,7 @@ const BlogPost = ({ params }) => {
 
   return (
     <>
-      <Navbar />
-      <div className="container mx-auto my-8">
+      <div className="container p-4 mx-auto my-8">
         <div className="max-w-3xl mx-auto">
           <img
             className="w-full h-64 object-cover rounded-lg"
